@@ -21,6 +21,7 @@ CREATE TABLE [dbo].[t_Mes_Prod_Flow]
 [FTotalTakeQty] [decimal] (18, 4) NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FTotalTakeQty] DEFAULT ((0)),
 [FTotalInvCheckDeltaQty] [decimal] (18, 4) NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FInvCheckDeltaQty] DEFAULT ((0)),
 [FTotalDefectQty] [decimal] (18, 4) NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FTotalInvCheckDeltaQty1] DEFAULT ((0)),
+[FWorkBeginDate] [datetime] NULL,
 [FWorkEndDate] [datetime] NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FWorkEndDate] DEFAULT ((0)),
 [FMoRptInterID] [int] NULL,
 [FMoRptBillNo] [varchar] (256) COLLATE Chinese_PRC_CI_AS NULL,

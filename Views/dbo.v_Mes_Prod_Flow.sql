@@ -38,7 +38,7 @@ As
 			, mis.FUnitUUID, mis.FUnitID, mis.FUnitName
 			-- 精度
 			, prd.FQtyDecimal
-			, head.FWorkEndDate
+			, head.FWorkBeginDate, head.FWorkEndDate
 			, head.FMoRptInterID, head.FMoRptBillNo, head.FMoRptEntryID
 			, head.FCreatorID, head.FCreateDate
 			, head.FCancellation

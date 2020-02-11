@@ -8,25 +8,27 @@ GO
 -- Description:	
 -- 不良库存
 -- =============================================
-CREATE VIEW [dbo].[v_Mes_Prod_Defect] 
-AS
+CREATE View [dbo].[v_Mes_Prod_Defect] 
+As
 	Select pdef.FInterID, pdef.FDeptID, dept.FName FDeptName, dept.FNumber FDeptNumber
 		, pdef.FDefectID, defect.FName FDefectName, defect.FNumber FDefectNumber
 		, pdef.FMissionID, mission.FSoBillNo, mission.FMoBillNo
-		, mission.FWorkShop, mission.FWorkShopName, mission.FWorkShopNumber
+		--, mission.FWorkShop, mission.FWorkShopName, mission.FWorkShopNumber
+			-- MES 同步后的车间
+		, workshop.FItemID FWorkShop, workshop.FName FWorkShopName, workshop.FNumber FWorkShopNumber
 		, mission.FProductID, prd.FName FProductName, prd.FNumber FProductNumber, prd.FModel
 		, unit.FName FUnitName, unit.FItemID FUnitID
 		, pdef.FQty, pdef.FRepairQty, pdef.FScrapQty, pdef.FDivertQty
 		, pdef.FQty - pdef.FRepairQty - pdef.FScrapQty - pdef.FDivertQty + pdef.FInvCheckDeltaQty FCurrentQty
 		, pdef.FInvCheckDeltaQty
-	from t_Mes_Prod_Defect pdef
+	From t_Mes_Prod_Defect pdef
 	Left Join t_Mes_Basic_Dept dept On pdef.FDeptID = dept.FItemID
 	Left Join t_Mes_Tech_Defect defect On pdef.FDefectID = defect.FItemID
 	Left Join t_Mes_Prod_Mission mission On pdef.FMissionId = mission.FInterID
 	Left Join t_Mes_Basic_Product prd On mission.FProductID = prd.FItemID
 	Left Join t_Mes_Basic_Unit unit On mission.FUnitUUID = unit.UUID
-
-
+	Left Join t_Mes_Basic_Dept workshop On mission.FWorkShop = workshop.FItemID
+	
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'生产-不良品库存', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Defect', NULL, NULL
 GO
