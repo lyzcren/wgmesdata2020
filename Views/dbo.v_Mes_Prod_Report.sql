@@ -8,18 +8,21 @@ GO
 -- Description:	
 -- 汇报单
 -- =============================================
-CREATE VIEW [dbo].[v_Mes_Prod_Report] 
-AS
+CREATE View [dbo].[v_Mes_Prod_Report] 
+As
 	Select head.FInterID, head.FBillNo
-		, head.FGroupBy, kv.FValue FGroupByName, kv.FKeyName FGroupByNumber, kv.FColor FGroupByColor 
+		, dept.FItemID FDeptID, dept.FName FDeptName, dept.FNumber FDeptNumber
 		, head.FStatus, kvStatus.FValue FStatusName, kvStatus.FKeyName FStatusNumber
-		, head.FCreatorID, creator.FName FCreatorName, creator.FNumber FCreatorNumber, head.FCreateDate
+		, creator.FItemID FCreatorID, creator.FName FCreatorName, creator.FNumber FCreatorNumber, head.FCreateDate
+		, editor.FItemID FEditorID, editor.FName FEditorName, editor.FNumber FEditorNumber, head.FEditDate
 		, head.FCheckerID, chr.FName FCheckerName, chr.FNumber FCheckerNumber, head.FCheckDate
+		, head.FMoRptInterID, head.FMoRptBillNo
 		, head.FComments
-	from t_Mes_Prod_Report head
+	From t_Mes_Prod_Report head
+	Left Join dbo.t_Mes_Basic_Dept dept On head.FDeptID = dept.FItemID
 	Left Join t_Mes_UM_User creator On head.FCreatorID = creator.FItemID
+	Left Join t_Mes_UM_User editor On head.FEditorID = editor.FItemID
 	Left Join t_Mes_UM_User chr On head.FCheckerID = chr.FItemID
-	Left Join t_Mes_Sys_KeyValue kv On kv.FNumber = 'ReportGroupBy' And kv.FKey = head.FGroupBy
 	Left Join t_Mes_Sys_KeyValue kvStatus On kvStatus.FNumber = 'ReportStatus' And kvStatus.FKey = head.FStatus
 
 GO
@@ -44,14 +47,6 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', '创建人', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Report', 'COLUMN', N'FCreatorName'
 GO
 EXEC sp_addextendedproperty N'MS_Description', '创建人编码', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Report', 'COLUMN', N'FCreatorNumber'
-GO
-EXEC sp_addextendedproperty N'MS_Description', '分组id', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Report', 'COLUMN', N'FGroupBy'
-GO
-EXEC sp_addextendedproperty N'MS_Description', '分组颜色', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Report', 'COLUMN', N'FGroupByColor'
-GO
-EXEC sp_addextendedproperty N'MS_Description', '分组名称', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Report', 'COLUMN', N'FGroupByName'
-GO
-EXEC sp_addextendedproperty N'MS_Description', '分组编码', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Report', 'COLUMN', N'FGroupByNumber'
 GO
 EXEC sp_addextendedproperty N'MS_Description', '内联ID', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Report', 'COLUMN', N'FInterID'
 GO

@@ -1,13 +1,17 @@
 CREATE TABLE [dbo].[t_Mes_Prod_Report]
 (
 [FInterID] [int] NOT NULL IDENTITY(1, 1),
+[FDeptID] [int] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Report_FDeptID] DEFAULT ((0)),
 [FBillNo] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FStatus] [int] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Report_FStatus] DEFAULT ((0)),
-[FGroupBy] [int] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Report_FGroupBy] DEFAULT ((0)),
 [FCreatorID] [int] NOT NULL,
 [FCreateDate] [datetime] NOT NULL,
+[FEditorID] [int] NULL,
+[FEditDate] [datetime] NULL,
 [FCheckerID] [int] NULL,
 [FCheckDate] [datetime] NULL,
+[FMoRptInterID] [int] NULL,
+[FMoRptBillNo] [varchar] (256) COLLATE Chinese_PRC_CI_AS NULL,
 [FComments] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL
 ) ON [PRIMARY]
 GO
@@ -28,9 +32,11 @@ EXEC sp_addextendedproperty N'MS_Description', N'创建日期', 'SCHEMA', N'dbo'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'创建人id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Report', 'COLUMN', N'FCreatorID'
 GO
-EXEC sp_addextendedproperty N'MS_Description', N'分组id（对应 t_Mes_Sys_KeyValue 的 ReportGroupBy）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Report', 'COLUMN', N'FGroupBy'
-GO
 EXEC sp_addextendedproperty N'MS_Description', N'汇报单id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Report', 'COLUMN', N'FInterID'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'汇报单单号', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Report', 'COLUMN', N'FMoRptBillNo'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'汇报单id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Report', 'COLUMN', N'FMoRptInterID'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'状态（对应 t_Mes_Sys_KeyValue 的 ReportStatus）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Report', 'COLUMN', N'FStatus'
 GO

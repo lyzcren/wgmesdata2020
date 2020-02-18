@@ -15,7 +15,7 @@ AS
 			, mis.FMoInterID, mis.FMoBillNo, mis.FMoQty
 			, mis.FAuxInHighLimitQty, mis.FAuxInLowLimitQty
 			, mis.FProductID, prd.FName FProductName, prd.FFullName FProductFullName, prd.FNumber FProductNumber, prd.FModel, prd.FErpClsID, kv.FValue FErpClsName
-			, mis.FPriority, mis.FPlanQty, mis.FInputQty, mis.FFinishQty, mis.FPassQty, mis.FRepairPassQty, mis.FScrapQty
+			, mis.FPriority, mis.FPlanQty, mis.FInputQty, mis.FFinishQty, mis.FPassQty, mis.FRepairPassQty, mis.FScrapQty, mis.FReportedQty
 			, mis.FUnitID, mis.FUnitName, mis.FUnitUUID
 			, mis.FParentModel, mis.FWorkShop, mis.FWorkShopNumber, mis.FWorkShopName
 			, dept.FItemID FWorkShopID

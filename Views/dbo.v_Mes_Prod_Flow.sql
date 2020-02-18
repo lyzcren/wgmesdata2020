@@ -11,7 +11,7 @@ GO
 CREATE View [dbo].[v_Mes_Prod_Flow] 
 As
 	
-	Select head.FInterID, IsNull(head.FFirstFlowID, head.FInterID) FFirstFlowID
+	Select head.FInterID, IsNull(head.FFirstFlowID, head.FInterID) FFirstFlowID, firstFlow.FBatchNo FFirstBatchNo
 			, head.FMissionID, mis.FMOInterID, mis.FMoBillNo, mis.FSoBillNo
 			-- 车间
 			--, mis.FWorkShop, mis.FWorkShopName, mis.FWorkShopNumber
@@ -39,7 +39,6 @@ As
 			-- 精度
 			, prd.FQtyDecimal
 			, head.FWorkBeginDate, head.FWorkEndDate
-			, head.FMoRptInterID, head.FMoRptBillNo, head.FMoRptEntryID
 			, head.FCreatorID, head.FCreateDate
 			, head.FCancellation
 			---- 岗位相关数量
@@ -47,6 +46,7 @@ As
 			---- 生产记录数量
 			--, rcd.FInputQty FRecordInputQty, rcd.FPassQty FRecordPassQty
 		From t_Mes_Prod_Flow head
+		Left Join t_Mes_Prod_Flow firstFlow On head.FFirstFlowID = firstFlow.FInterID
 		Left Join t_Mes_Prod_Mission mis On head.FMissionID = mis.FInterID
 		Left Join t_Mes_Basic_Product prd On head.FProductID = prd.FItemID
 		Left Join t_Mes_Tech_Route rout On head.FRouteID = rout.FInterID
@@ -57,7 +57,6 @@ As
 		Left Join t_Mes_Basic_Dept dept On rcd.FDeptID = dept.FItemID
 		Left Join t_Mes_Basic_UnitConverter converter On rcd.FUnitConverterID = converter.FItemID
 		
-
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'生产-流程单', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Flow', NULL, NULL
 GO
@@ -114,12 +113,6 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', '生产订单单号', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Flow', 'COLUMN', N'FMoBillNo'
 GO
 EXEC sp_addextendedproperty N'MS_Description', '生产订单id', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Flow', 'COLUMN', N'FMOInterID'
-GO
-EXEC sp_addextendedproperty N'MS_Description', '汇报单单号', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Flow', 'COLUMN', N'FMoRptBillNo'
-GO
-EXEC sp_addextendedproperty N'MS_Description', '汇报单分录id', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Flow', 'COLUMN', N'FMoRptEntryID'
-GO
-EXEC sp_addextendedproperty N'MS_Description', '汇报单id', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Flow', 'COLUMN', N'FMoRptInterID'
 GO
 EXEC sp_addextendedproperty N'MS_Description', '优先级', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Flow', 'COLUMN', N'FPriority'
 GO

@@ -19,6 +19,7 @@ CREATE TABLE [dbo].[t_Mes_Prod_Mission]
 [FPassQty] [decimal] (18, 8) NOT NULL,
 [FRepairPassQty] [decimal] (18, 8) NOT NULL CONSTRAINT [DF_t_Mes_Prod_Mission_FRepairPassQty] DEFAULT ((0)),
 [FScrapQty] [decimal] (18, 8) NOT NULL,
+[FReportedQty] [decimal] (18, 8) NOT NULL,
 [FUnitUUID] [uniqueidentifier] NULL,
 [FUnitID] [int] NOT NULL,
 [FUnitName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,

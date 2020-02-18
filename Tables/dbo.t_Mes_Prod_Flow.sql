@@ -23,9 +23,6 @@ CREATE TABLE [dbo].[t_Mes_Prod_Flow]
 [FTotalDefectQty] [decimal] (18, 4) NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FTotalInvCheckDeltaQty1] DEFAULT ((0)),
 [FWorkBeginDate] [datetime] NULL,
 [FWorkEndDate] [datetime] NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FWorkEndDate] DEFAULT ((0)),
-[FMoRptInterID] [int] NULL,
-[FMoRptBillNo] [varchar] (256) COLLATE Chinese_PRC_CI_AS NULL,
-[FMoRptEntryID] [int] NULL,
 [FUnitUUID] [uniqueidentifier] NULL,
 [FUnitID] [int] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FUnitID] DEFAULT ((0)),
 [FUnitName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
@@ -64,12 +61,6 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', N'是否返修单', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Flow', 'COLUMN', N'FIsRepair'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'任务单id（对应 t_Mes_Prod_Mission 的 FInterID ）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Flow', 'COLUMN', N'FMissionID'
-GO
-EXEC sp_addextendedproperty N'MS_Description', N'汇报单单号', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Flow', 'COLUMN', N'FMoRptBillNo'
-GO
-EXEC sp_addextendedproperty N'MS_Description', N'汇报单分录id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Flow', 'COLUMN', N'FMoRptEntryID'
-GO
-EXEC sp_addextendedproperty N'MS_Description', N'汇报单id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Flow', 'COLUMN', N'FMoRptInterID'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'优先级', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Flow', 'COLUMN', N'FPriority'
 GO

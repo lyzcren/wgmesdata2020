@@ -17,7 +17,7 @@ As
 			, rcd.FDeptID, dept.FName FDeptName, dept.FNumber FDeptNumber
 			, rcd.FStatus, kv.FValue FStatusName, kv.FKeyName FStatusNumber, kv.FColor FStatusColor
 			, rcd.FInputQty, rcd.FPassQty, rcd.FDefectQty, rcd.FRefundQty, rcd.FTakeQty, rcd.FInvCheckDeltaQty
-			, flow.FMissionID, mis.FMoBillNo, mis.FSoBillNo
+			, flow.FMissionID, mis.FMoBillNo, mis.FSoBillNo, IsNull(flow.FFirstFlowID, flow.FInterID) FFirstFlowID, firstFlow.FBatchNo FFirstBatchNo
 			, flow.FProductID, prd.FName FProductName, prd.FFullName FProductFullName, prd.FNumber FProductNumber, prd.FModel FProductModel
 			, flow.FPriority			
 			, flow.FBatchNo, flow.FTotalBatchCount, flow.FFullBatchNo
@@ -42,7 +42,7 @@ As
 			, rcd.FProduceMinute, rcd.FStopMinute
 			, rcd.FWorkTimeID, workTime.FName FWorkTimeName, workTime.FNumber FWorkTimeNumber
 			-- 单位
-			, mis.FUnitID, mis.FUnitName
+			, mis.FUnitID, mis.FUnitName, mis.FUnitUUID
 			, rcd.FIsReproduce
 			-- 精度
 			, prd.FQtyDecimal
@@ -57,6 +57,7 @@ As
 		From t_Mes_Prod_Record rcd
 		Left Join t_Mes_Basic_Dept dept On rcd.FDeptID = dept.FItemID
 		Left Join t_Mes_Prod_Flow flow On rcd.FFlowID = flow.FInterID
+		Left Join t_Mes_Prod_Flow firstFlow On flow.FFirstFlowID = firstFlow.FInterID
 		Left Join t_Mes_Tech_Route rout On rcd.FRouteID = rout.FInterID
 		Left Join t_Mes_Sys_KeyValue kv On kv.FNumber = 'RecordStatus' And kv.FKey = rcd.FStatus
 		Left Join t_Mes_Prod_Mission mis On flow.FMissionID = mis.FInterID
