@@ -41,7 +41,7 @@ As
 		Left Join t_Mes_Basic_Dept workshop On head.FWorkShop = workshop.FItemID
 		Left Join t_Mes_Basic_Dept dept On rcd.FDeptID = dept.FItemID
 		Left Join t_Mes_Basic_Unit unit On head.FUnitUUID = unit.UUID
-		Where kv.FKeyName = 'EndProduce' Or kv.FKeyName = 'Reported'
+		Where kv.FKeyName = 'Producing' And (kvRcd.FKeyName = 'ManufProducing' Or kvRcd.FKeyName = 'ManufTransfered')
 
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'生产-在制品库存', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Prod_Inv', NULL, NULL

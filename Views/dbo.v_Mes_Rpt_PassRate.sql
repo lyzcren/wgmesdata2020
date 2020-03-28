@@ -2,7 +2,6 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
-
 -- =============================================
 -- Author:		ywlin
 -- Create date: 2019-06-14
@@ -30,8 +29,8 @@ AS
 			, dateadd(week, datediff(week, 0, rcd.FTransferDate), 0) FMonday
 			, dateadd(week, datediff(week, 0, rcd.FTransferDate), 6) FSunday
 			, rcd.FProduceMinute, rcd.FStopMinute
-			-- 良率
-			, Case When rcd.FInputQty = 0 Then 0 Else rcd.FPassQty / rcd.FInputQty End FPassRate
+			---- 良率
+			--, Case When rcd.FInputQty = 0 Then 0 Else rcd.FPassQty / rcd.FInputQty End FPassRate
 			-- 单位
 			, unit.FItemID FUnitID, unit.FName FUnitName, unit.FNumber FUnitNumber, unit.FShortNumber FUnitShortNumber
 		from t_Mes_Prod_Record rcd
@@ -45,6 +44,7 @@ AS
 		Left Join t_Mes_Basic_Unit unit On flow.FUnitUUID = unit.UUID
 		Left Join t_Mes_Sys_KeyValue kvRcd On kvRcd.FNumber = 'RecordStatus' And kvRcd.FKey = rcd.FStatus
 		Where kvRcd.FKeyName = 'ManufEndProduce' And rcd.FIsCancellation = 0
+
 
 
 GO
@@ -85,8 +85,6 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', '操作员编码', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Rpt_PassRate', 'COLUMN', N'FOperatorNumber'
 GO
 EXEC sp_addextendedproperty N'MS_Description', '良品数量', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Rpt_PassRate', 'COLUMN', N'FPassQty'
-GO
-EXEC sp_addextendedproperty N'MS_Description', '良率', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Rpt_PassRate', 'COLUMN', N'FPassRate'
 GO
 EXEC sp_addextendedproperty N'MS_Description', '生产总耗时（分钟）', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Rpt_PassRate', 'COLUMN', N'FProduceMinute'
 GO
