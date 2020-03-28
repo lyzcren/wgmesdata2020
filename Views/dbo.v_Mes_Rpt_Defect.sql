@@ -8,8 +8,8 @@ GO
 -- Description:	
 -- 不良明细
 -- =============================================
-CREATE VIEW [dbo].[v_Mes_Rpt_Defect] 
-AS
+CREATE View [dbo].[v_Mes_Rpt_Defect] 
+As
 	Select 
 			-- 不良
 			def.FItemID FDefectID, def.FName FDefectName, def.FNumber FDefectNumber,
@@ -23,13 +23,13 @@ AS
 			-- 操作员
 			, rcd.FOperatorID, emp.FName FOperatorName, emp.FNumber FOperatorNumber
 			, rcd.FTransferUserID, rcd.FTransferDate, rcd.FTransferDateTime
-			, Cast(DATENAME(month, rcd.FTransferDate) as int) FMonth
-			, DATENAME(week, rcd.FTransferDate) FWeek
-			, dateadd(week, datediff(week, 0, rcd.FTransferDate), 0) FMonday
-			, dateadd(week, datediff(week, 0, rcd.FTransferDate), 6) FSunday
+			, Month(rcd.FTransferDate) FMonth
+			, DateName(Week, rcd.FTransferDate) FWeek
+			, DateAdd(Week, DateDiff(Week, 0, rcd.FTransferDate), 0) FMonday
+			, DateAdd(Week, DateDiff(Week, 0, rcd.FTransferDate), 6) FSunday
 			-- 单位
 			, unit.FItemID FUnitID, unit.FName FUnitName, unit.FNumber FUnitNumber, unit.FShortNumber FUnitShortNumber
-		from t_Mes_Prod_Record rcd
+		From t_Mes_Prod_Record rcd
 		Inner Join t_Mes_Prod_RecordDefect rdef On rcd.FInterID = rdef.FInterID
 		Left Join t_Mes_Tech_Defect def On rdef.FDefectID = def.FItemID
 		Left Join t_Mes_Basic_Dept dept On rcd.FDeptID = dept.FItemID

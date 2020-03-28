@@ -8,8 +8,8 @@ GO
 -- Description:	
 -- 已完工生产记录（只记产出，用于产量、产能报表等报表计算）
 -- =============================================
-CREATE VIEW [dbo].[v_Mes_Rpt_PassRate] 
-AS
+CREATE View [dbo].[v_Mes_Rpt_PassRate] 
+As
 	
 	Select 
 			-- 部门
@@ -24,16 +24,16 @@ AS
 			-- 操作员
 			, rcd.FOperatorID, emp.FName FOperatorName, emp.FNumber FOperatorNumber
 			, rcd.FTransferUserID, rcd.FTransferDate, rcd.FTransferDateTime
-			, DATENAME(month, rcd.FTransferDate) FMonth
-			, DATENAME(week, rcd.FTransferDate) FWeek
-			, dateadd(week, datediff(week, 0, rcd.FTransferDate), 0) FMonday
-			, dateadd(week, datediff(week, 0, rcd.FTransferDate), 6) FSunday
+			, Month(rcd.FTransferDate) FMonth
+			, DateName(Week, rcd.FTransferDate) FWeek
+			, DateAdd(Week, DateDiff(Week, 0, rcd.FTransferDate), 0) FMonday
+			, DateAdd(Week, DateDiff(Week, 0, rcd.FTransferDate), 6) FSunday
 			, rcd.FProduceMinute, rcd.FStopMinute
 			---- 良率
 			--, Case When rcd.FInputQty = 0 Then 0 Else rcd.FPassQty / rcd.FInputQty End FPassRate
 			-- 单位
 			, unit.FItemID FUnitID, unit.FName FUnitName, unit.FNumber FUnitNumber, unit.FShortNumber FUnitShortNumber
-		from t_Mes_Prod_Record rcd
+		From t_Mes_Prod_Record rcd
 		Left Join t_Mes_Basic_Dept dept On rcd.FDeptID = dept.FItemID
 		Left Join t_Mes_Prod_Flow flow On rcd.FFlowID = flow.FInterID
 		Left Join t_Mes_Tech_Route rout On rcd.FRouteID = rout.FInterID
@@ -44,8 +44,6 @@ AS
 		Left Join t_Mes_Basic_Unit unit On flow.FUnitUUID = unit.UUID
 		Left Join t_Mes_Sys_KeyValue kvRcd On kvRcd.FNumber = 'RecordStatus' And kvRcd.FKey = rcd.FStatus
 		Where kvRcd.FKeyName = 'ManufEndProduce' And rcd.FIsCancellation = 0
-
-
 
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'报表-良率', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Rpt_PassRate', NULL, NULL
