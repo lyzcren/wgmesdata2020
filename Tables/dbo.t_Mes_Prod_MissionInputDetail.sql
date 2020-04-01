@@ -1,12 +1,13 @@
 CREATE TABLE [dbo].[t_Mes_Prod_MissionInputDetail]
 (
 [ID] [int] NOT NULL,
-[FFlowID] [int] NOT NULL,
+[FEntryID] [int] NOT NULL CONSTRAINT [DF_t_Mes_Prod_MissionInputDetail_FEntryID] DEFAULT ((0)),
 [FFullBatchNo] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
-[FInputQty] [decimal] (18, 4) NOT NULL
+[FInputQty] [decimal] (18, 4) NOT NULL,
+[FFlowID] [int] NOT NULL
 ) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[t_Mes_Prod_MissionInputDetail] ADD CONSTRAINT [PK_t_Mes_Prod_MissionInputDetail] PRIMARY KEY CLUSTERED  ([ID], [FFlowID]) ON [PRIMARY]
+ALTER TABLE [dbo].[t_Mes_Prod_MissionInputDetail] ADD CONSTRAINT [PK_t_Mes_Prod_MissionInputDetail] PRIMARY KEY CLUSTERED  ([ID], [FEntryID]) ON [PRIMARY]
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'生产-生产任务单开流程单记录明细表。
 即一次开流程单可同时开出多个流程单，此表记录每个明细流程单的开出记录。', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_MissionInputDetail', NULL, NULL

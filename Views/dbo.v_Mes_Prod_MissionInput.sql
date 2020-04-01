@@ -17,8 +17,8 @@ AS
 			--, mis.FWorkShop, mis.FWorkShopName, mis.FWorkShopNumber
 			-- MES 同步后的车间
 			, workshop.FItemID FWorkShop, workshop.FName FWorkShopName, workshop.FNumber FWorkShopNumber
-			, head.FProductID, prd.FName FProductName, prd.FFullName FProductFullName, prd.FNumber FProductNumber, prd.FModel FProductModel
-			, head.FPriority
+			, mis.FProductID, prd.FName FProductName, prd.FFullName FProductFullName, prd.FNumber FProductNumber, prd.FModel FProductModel
+			, mis.FPriority
 			, head.FRouteID, rout.FNumber FRouteNumber, rout.FName FRouteName
 			, head.FBatchNo, head.FTotalBatchCount
 			, head.FInputQty
@@ -28,9 +28,9 @@ AS
 			, head.FCancellationDate
 		from t_Mes_Prod_MissionInput head
 		Left Join t_Mes_Prod_Mission mis On head.FMissionID = mis.FInterID
-		Left Join t_Mes_Basic_Product prd On head.FProductID = prd.FItemID
+		Left Join t_Mes_Basic_Product prd On mis.FProductID = prd.FItemID
 		Left Join t_Mes_Tech_Route rout On head.FRouteID = rout.FInterID
-		Left Join t_Mes_Basic_Dept workshop On head.FWorkShop = workshop.FItemID
+		Left Join t_Mes_Basic_Dept workshop On mis.FWorkShop = workshop.FItemID
 		Left Join t_Mes_UM_User creator On head.FCreatorID = creator.FItemID
 		Left Join t_Mes_UM_User cancellator On head.FCancellationUserID = cancellator.FItemID
 
