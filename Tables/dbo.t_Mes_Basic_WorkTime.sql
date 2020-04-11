@@ -1,8 +1,8 @@
 CREATE TABLE [dbo].[t_Mes_Basic_WorkTime]
 (
 [FItemID] [int] NOT NULL IDENTITY(1, 1),
-[FName] [varchar] (25) COLLATE Chinese_PRC_CI_AS NOT NULL,
-[FNumber] [varchar] (80) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FNumber] [nvarchar] (80) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FIsActive] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Basic_WorkTime_FIsActive] DEFAULT ((1)),
 [FBeginTime] [varchar] (5) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FEndTime] [varchar] (5) COLLATE Chinese_PRC_CI_AS NOT NULL,

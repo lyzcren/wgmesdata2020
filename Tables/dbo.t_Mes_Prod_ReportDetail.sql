@@ -4,7 +4,7 @@ CREATE TABLE [dbo].[t_Mes_Prod_ReportDetail]
 [FEntryID] [int] NOT NULL,
 [FInvID] [int] NOT NULL,
 [FReportingQty] [decimal] (18, 4) NOT NULL,
-[FRowComments] [varchar] (250) COLLATE Chinese_PRC_CI_AS NULL
+[FRowComments] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_Prod_ReportDetail] ADD CONSTRAINT [PK_t_Mes_Prod_ReportDetail] PRIMARY KEY CLUSTERED  ([FInterID], [FEntryID]) ON [PRIMARY]
@@ -17,6 +17,8 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', N'汇报单id（对应 t_Mes_Prod_Report 的 FInterID）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_ReportDetail', 'COLUMN', N'FInterID'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'流程单id（对应 t_Mes_Prod_Flow 的 FInterID）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_ReportDetail', 'COLUMN', N'FInvID'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'当前汇报数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_ReportDetail', 'COLUMN', N'FReportingQty'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'行备注', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_ReportDetail', 'COLUMN', N'FRowComments'
 GO

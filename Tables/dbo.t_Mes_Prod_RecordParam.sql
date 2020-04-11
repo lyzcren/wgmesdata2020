@@ -3,7 +3,7 @@ CREATE TABLE [dbo].[t_Mes_Prod_RecordParam]
 [FInterID] [int] NOT NULL,
 [FEntryID] [int] NOT NULL,
 [FParamID] [int] NOT NULL,
-[FValue] [varchar] (250) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FValue] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FIsRequired] [bit] NULL CONSTRAINT [DF_t_Mes_Prod_RecordParam_FIsRequired] DEFAULT ((0))
 ) ON [PRIMARY]
 GO

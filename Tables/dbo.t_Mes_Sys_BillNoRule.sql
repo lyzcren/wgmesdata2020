@@ -1,10 +1,10 @@
 CREATE TABLE [dbo].[t_Mes_Sys_BillNoRule]
 (
 [FItemID] [int] NOT NULL IDENTITY(1, 1),
-[FName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FNumber] [varchar] (25) COLLATE Chinese_PRC_CI_AS NULL,
-[FPrefix] [varchar] (25) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_Sys_BillRule_FPrefix] DEFAULT (''),
-[FSuffix] [varchar] (25) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_Sys_BillRule_FSuffix] DEFAULT (''),
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FPrefix] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_Sys_BillRule_FPrefix] DEFAULT (''),
+[FSuffix] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_Sys_BillRule_FSuffix] DEFAULT (''),
 [FNoLength] [int] NOT NULL,
 [FAppendYear] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Sys_BillNoRule_FAppendYear] DEFAULT ((1)),
 [FLongYear] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Sys_BillNoRule_FLongYear] DEFAULT ((0)),
@@ -16,7 +16,7 @@ CREATE TABLE [dbo].[t_Mes_Sys_BillNoRule]
 [FMaxID] [int] NOT NULL,
 [FCurrentDate] [datetime] NULL,
 [FIsAutoReset] [bit] NOT NULL,
-[FComments] [varchar] (250) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_Sys_BillRule_FComments] DEFAULT ('')
+[FComments] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_Sys_BillRule_FComments] DEFAULT ('')
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_Sys_BillNoRule] ADD CONSTRAINT [PK_t_Mes_Sys_BillRule] PRIMARY KEY CLUSTERED  ([FItemID]) ON [PRIMARY]

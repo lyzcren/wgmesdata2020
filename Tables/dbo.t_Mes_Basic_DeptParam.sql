@@ -18,6 +18,8 @@ EXEC sp_addextendedproperty N'MS_Description', N'部门id（对应 t_Mes_Basic_D
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'分录id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_DeptParam', 'COLUMN', N'FEntryID'
 GO
+EXEC sp_addextendedproperty N'MS_Description', N'是否必填', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_DeptParam', 'COLUMN', N'FIsRequired'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'参数id（对应 t_Mes_Tech_Param 的 FItemID ）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_DeptParam', 'COLUMN', N'FParamID'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'唯一id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_DeptParam', 'COLUMN', N'Guid'

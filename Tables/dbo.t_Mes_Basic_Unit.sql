@@ -1,9 +1,9 @@
 CREATE TABLE [dbo].[t_Mes_Basic_Unit]
 (
 [FItemID] [int] NOT NULL IDENTITY(1, 1),
-[FName] [varchar] (25) COLLATE Chinese_PRC_CI_AS NULL,
-[FNumber] [varchar] (80) COLLATE Chinese_PRC_CI_AS NULL,
-[FShortNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FNumber] [nvarchar] (80) COLLATE Chinese_PRC_CI_AS NULL,
+[FShortNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
 [FPrecision] [int] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Unit_FPrecision] DEFAULT ((0)),
 [FCoefficient] [decimal] (18, 8) NOT NULL CONSTRAINT [DF_t_Mes_Basic_Unit_FIsActive] DEFAULT ((1)),
 [FStandard] [bit] NOT NULL,

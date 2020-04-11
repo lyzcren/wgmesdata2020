@@ -2,10 +2,10 @@ CREATE TABLE [dbo].[t_Mes_UM_AuthorityEntry]
 (
 [FInterID] [int] NOT NULL,
 [FEntryID] [int] NOT NULL,
-[FName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FOperation] [varchar] (25) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_UM_AuthorityEntry_FOperation] DEFAULT (''),
-[FShortOP] [varchar] (25) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_UM_AuthorityEntry_FShortOP] DEFAULT (''),
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FOperation] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_UM_AuthorityEntry_FOperation] DEFAULT (''),
+[FShortOP] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL CONSTRAINT [DF_t_Mes_UM_AuthorityEntry_FShortOP] DEFAULT (''),
 [FIsActive] [bit] NULL CONSTRAINT [DF_t_Mes_UM_AuthorityEntry_FIsActive] DEFAULT ((1)),
 [FOrder] [int] NULL CONSTRAINT [DF_t_Mes_UM_AuthorityEntry_FOrder] DEFAULT ((0))
 ) ON [PRIMARY]

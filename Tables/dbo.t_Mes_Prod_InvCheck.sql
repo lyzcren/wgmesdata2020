@@ -1,7 +1,7 @@
 CREATE TABLE [dbo].[t_Mes_Prod_InvCheck]
 (
 [FInterID] [int] NOT NULL IDENTITY(1, 1),
-[FBillNo] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FBillNo] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FDate] [datetime] NOT NULL,
 [FTotalDeltaQty] [decimal] (18, 8) NOT NULL,
 [FStatus] [int] NOT NULL CONSTRAINT [DF_t_Mes_Prod_InvCheck_FStatus] DEFAULT ((0)),

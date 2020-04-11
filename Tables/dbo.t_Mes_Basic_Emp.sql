@@ -1,8 +1,8 @@
 CREATE TABLE [dbo].[t_Mes_Basic_Emp]
 (
 [FItemID] [int] NOT NULL IDENTITY(1, 1),
-[FName] [varchar] (25) COLLATE Chinese_PRC_CI_AS NULL,
-[FNumber] [varchar] (80) COLLATE Chinese_PRC_CI_AS NULL,
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FNumber] [nvarchar] (80) COLLATE Chinese_PRC_CI_AS NULL,
 [FIsActive] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Baisc_Emp_FIsActive] DEFAULT ((1)),
 [FIsOperator] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Baisc_Emp_FIsOprator] DEFAULT ((0)),
 [FIsDebugger] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Baisc_Emp_FIsDebugger] DEFAULT ((0)),

@@ -1,8 +1,8 @@
 CREATE TABLE [dbo].[t_Mes_Tech_Defect]
 (
 [FItemID] [int] NOT NULL IDENTITY(1, 1),
-[FNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
-[FName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FIsActive] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Defect_FIsActive] DEFAULT ((1)),
 [FDeptID] [int] NOT NULL CONSTRAINT [DF_t_Mes_Tech_Defect_FDeptID] DEFAULT ((0)),
 [FTypeID] [int] NOT NULL,

@@ -1,8 +1,8 @@
 CREATE TABLE [dbo].[t_Mes_Tech_Route]
 (
 [FInterID] [int] NOT NULL IDENTITY(1, 1),
-[FNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
-[FName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FIsActive] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Route_FIsActive] DEFAULT ((0)),
 [FStatus] [int] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Route_FStatus] DEFAULT ((0)),
 [FCreatorID] [int] NOT NULL,

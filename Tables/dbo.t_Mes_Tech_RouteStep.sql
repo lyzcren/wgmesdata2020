@@ -25,6 +25,8 @@ EXEC sp_addextendedproperty N'MS_Description', N'分组id', 'SCHEMA', N'dbo', 'T
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'工艺路线id（对应 t_Mes_Tech_Route 的 FInterID）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Tech_RouteStep', 'COLUMN', N'FInterID'
 GO
+EXEC sp_addextendedproperty N'MS_Description', N'调机员是否必填', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Tech_RouteStep', 'COLUMN', N'FRequireDebugger'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'机台是否必填', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Tech_RouteStep', 'COLUMN', N'FRequireMachine'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'唯一id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Tech_RouteStep', 'COLUMN', N'Guid'

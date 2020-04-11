@@ -1,9 +1,9 @@
 CREATE TABLE [dbo].[t_Mes_UM_Role]
 (
 [FItemID] [int] NOT NULL IDENTITY(1, 1),
-[FNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FComments] [varchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FComments] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
 [FIsActive] [bit] NULL CONSTRAINT [DF_t_Mes_UM_Role_FIsActive] DEFAULT ((0)),
 [FEditable] [bit] NULL,
 [FCreatorID] [int] NULL,
@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[t_Mes_UM_Role]
 [FEditorID] [int] NULL,
 [FEditDate] [datetime] NULL,
 [FIsSuperAdmin] [bit] NULL CONSTRAINT [DF_t_Mes_UM_Role_FIsSuperAdmin] DEFAULT ((0)),
-[FIndexPage] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL
+[FIndexPage] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_UM_Role] ADD CONSTRAINT [PK_t_Role] PRIMARY KEY CLUSTERED  ([FItemID]) ON [PRIMARY]

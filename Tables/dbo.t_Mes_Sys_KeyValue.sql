@@ -1,10 +1,10 @@
 CREATE TABLE [dbo].[t_Mes_Sys_KeyValue]
 (
 [Guid] [uniqueidentifier] NOT NULL CONSTRAINT [DF_t_Mes_Sys_KeyValue_Guid] DEFAULT (newid()),
-[FNumber] [varchar] (100) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FNumber] [nvarchar] (100) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FKey] [int] NOT NULL,
-[FKeyName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
-[FValue] [varchar] (100) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FKeyName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FValue] [nvarchar] (100) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FColor] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL
 ) ON [PRIMARY]
 GO

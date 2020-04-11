@@ -22,13 +22,13 @@ CREATE TABLE [dbo].[t_Mes_Prod_Mission]
 [FReportedQty] [decimal] (18, 8) NOT NULL,
 [FUnitUUID] [uniqueidentifier] NULL,
 [FUnitID] [int] NOT NULL,
-[FUnitName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FUnitName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
 [FUnitRate2] [decimal] (18, 4) NOT NULL,
 [FUnitID2] [int] NOT NULL,
-[FUnitName2] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FUnitName2] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
 [FParentModel] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
 [FWorkShop] [int] NULL,
-[FWorkShopNumber] [varchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
+[FWorkShopNumber] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
 [FWorkShopName] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
 [FStatus] [int] NOT NULL,
 [FCreatorID] [int] NOT NULL,
@@ -38,16 +38,16 @@ CREATE TABLE [dbo].[t_Mes_Prod_Mission]
 [FErpSyncDate] [datetime] NULL,
 [FComments] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
 [FRouteID] [int] NULL,
-[FMesSelf001] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf002] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf003] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf004] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf005] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf006] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf007] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf008] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf009] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf010] [varchar] (128) COLLATE Chinese_PRC_CI_AS NULL
+[FMesSelf001] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FMesSelf002] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FMesSelf003] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FMesSelf004] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FMesSelf005] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FMesSelf006] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FMesSelf007] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FMesSelf008] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FMesSelf009] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FMesSelf010] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_Prod_Mission] ADD CONSTRAINT [PK_t_Mes_Prod_MOPlan] PRIMARY KEY CLUSTERED  ([FInterID]) ON [PRIMARY]
@@ -119,6 +119,8 @@ EXEC sp_addextendedproperty N'MS_Description', N'物料id', 'SCHEMA', N'dbo', 'T
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'返修良品数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FRepairPassQty'
 GO
+EXEC sp_addextendedproperty N'MS_Description', N'汇报数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FReportedQty'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'默认工艺路线id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FRouteID'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'报废数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FScrapQty'
@@ -134,6 +136,8 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', N'单位id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FUnitID'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'副单位id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FUnitID2'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'单位', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FUnitName'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'副单位转换率', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FUnitRate2'
 GO

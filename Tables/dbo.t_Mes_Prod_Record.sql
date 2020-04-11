@@ -35,9 +35,9 @@ CREATE TABLE [dbo].[t_Mes_Prod_Record]
 [FIsCancellation] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Record_FIsCancellation] DEFAULT ((0)),
 [FWorkTimeID] [int] NULL,
 [FUnitConverterID] [int] NULL,
-[FUnitConverterName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FConvertUnitName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FConvertMode] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FUnitConverterName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FConvertUnitName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FConvertMode] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
 [FConvertDecimal] [int] NULL CONSTRAINT [DF_t_Mes_Prod_Record_FDecimal] DEFAULT ((0)),
 [FConvertRate] [decimal] (18, 4) NULL,
 [FConvertInputQty] [decimal] (18, 4) NULL CONSTRAINT [DF_t_Mes_Prod_Record_FInputQty1] DEFAULT ((0)),
@@ -53,9 +53,19 @@ EXEC sp_addextendedproperty N'MS_Description', N'是否自动签收', 'SCHEMA', 
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'开始生产时间', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FBeginDate'
 GO
+EXEC sp_addextendedproperty N'MS_Description', N'保留小数位', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FConvertDecimal'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'投入数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FConvertInputQty'
 GO
+EXEC sp_addextendedproperty N'MS_Description', N'换算方式', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FConvertMode'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'良品数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FConvertPassQty'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'转换率', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FConvertRate'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'副单位名称', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FConvertUnitName'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'调机员id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FDebuggerID'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'不良数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FDefectQty'
 GO
@@ -85,9 +95,13 @@ EXEC sp_addextendedproperty N'MS_Description', N'在工艺路线节点中的排�
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'良品数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FPassQty'
 GO
+EXEC sp_addextendedproperty N'MS_Description', N'上一个生产记录id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FPreRecordID'
+GO
 EXEC sp_addextendedproperty N'MS_Description', N'生产总耗时（分钟）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FProduceMinute'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'退回数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FRefundQty'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'调机员是否必填', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FRequireDebugger'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'机台是否必填', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FRequireMachine'
 GO
@@ -112,6 +126,10 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', N'转序时间', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FTransferDateTime'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'转序人id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FTransferUserID'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'单位转换器id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FUnitConverterID'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'单位转换器名称', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FUnitConverterName'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'班次id（对应 t_Mes_Basic_WorkTime 的 FItemID ）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Record', 'COLUMN', N'FWorkTimeID'
 GO

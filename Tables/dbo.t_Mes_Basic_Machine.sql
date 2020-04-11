@@ -1,8 +1,8 @@
 CREATE TABLE [dbo].[t_Mes_Basic_Machine]
 (
 [FItemID] [int] NOT NULL IDENTITY(1, 1),
-[FNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FSerialNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FSerialNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
 [FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
 [FDeptID] [int] NOT NULL,
 [FIsActive] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Machine_FIsActive] DEFAULT ((1)),
@@ -34,6 +34,8 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', N'名称', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_Machine', 'COLUMN', N'FName'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'编码', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_Machine', 'COLUMN', N'FNumber'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'序列号', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_Machine', 'COLUMN', N'FSerialNumber'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'状态（对应 t_Mes_Sys_KeyValue 的 MachineStatus ）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_Machine', 'COLUMN', N'FStatus'
 GO

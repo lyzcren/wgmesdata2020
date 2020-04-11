@@ -1,8 +1,8 @@
 CREATE TABLE [dbo].[t_Mes_Tech_Param]
 (
 [FItemID] [int] NOT NULL IDENTITY(1, 1),
-[FNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
-[FName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FType] [int] NOT NULL CONSTRAINT [DF_t_Mes_Tech_Param_FType] DEFAULT ((0)),
 [FIsActive] [bit] NOT NULL,
 [FCreatorID] [int] NOT NULL,
@@ -31,4 +31,6 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', N'名称', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Tech_Param', 'COLUMN', N'FName'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'编码', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Tech_Param', 'COLUMN', N'FNumber'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'类型', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Tech_Param', 'COLUMN', N'FType'
 GO

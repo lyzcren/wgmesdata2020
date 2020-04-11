@@ -3,7 +3,7 @@ CREATE TABLE [dbo].[t_Mes_Prod_MissionInput]
 [ID] [int] NOT NULL IDENTITY(1, 1),
 [FMissionID] [int] NOT NULL,
 [FRouteID] [int] NOT NULL,
-[FBatchNo] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FBatchNo] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FInputQty] [decimal] (18, 4) NOT NULL,
 [FBatchQty] [decimal] (18, 4) NOT NULL CONSTRAINT [DF_t_Mes_Prod_MissionInput_FBatchQty] DEFAULT ((0)),
 [FTotalBatchCount] [int] NOT NULL,
@@ -20,6 +20,8 @@ EXEC sp_addextendedproperty N'MS_Description', N'生产-生产任务单开流程
 每次开流程单后均有开流程单记录。', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_MissionInput', NULL, NULL
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'批号', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_MissionInput', 'COLUMN', N'FBatchNo'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'每批数量', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_MissionInput', 'COLUMN', N'FBatchQty'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'是否作废', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_MissionInput', 'COLUMN', N'FCancellation'
 GO

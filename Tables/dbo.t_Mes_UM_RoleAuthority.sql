@@ -2,7 +2,7 @@ CREATE TABLE [dbo].[t_Mes_UM_RoleAuthority]
 (
 [Guid] [uniqueidentifier] NOT NULL ROWGUIDCOL CONSTRAINT [DF_t_Mes_UM_RoleAuthority_Guid] DEFAULT (newid()),
 [FRoleID] [int] NOT NULL,
-[FAuthorityNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL
+[FAuthorityNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_UM_RoleAuthority] ADD CONSTRAINT [PK_t_Mes_UM_RoleAuthority] PRIMARY KEY CLUSTERED  ([Guid]) ON [PRIMARY]

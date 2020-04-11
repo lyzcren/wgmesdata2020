@@ -1,9 +1,9 @@
 CREATE TABLE [dbo].[t_Mes_UM_Authority]
 (
 [FInterID] [int] NOT NULL IDENTITY(1, 1),
-[FName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FDevNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FDevNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
 [FIsActive] [bit] NULL,
 [FOrder] [int] NULL,
 [FParentID] [int] NULL

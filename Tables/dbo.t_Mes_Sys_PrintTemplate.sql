@@ -1,9 +1,9 @@
 CREATE TABLE [dbo].[t_Mes_Sys_PrintTemplate]
 (
 [FInterID] [int] NOT NULL IDENTITY(1, 1),
-[FNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
-[FName] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
-[FFileName] [varchar] (250) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FFileName] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FContent] [nvarchar] (max) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FUploadUserID] [int] NOT NULL,
 [FUploadDate] [datetime] NOT NULL

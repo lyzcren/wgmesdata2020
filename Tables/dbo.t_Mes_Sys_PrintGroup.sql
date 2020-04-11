@@ -1,13 +1,13 @@
 CREATE TABLE [dbo].[t_Mes_Sys_PrintGroup]
 (
-[FNumber] [varchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
-[FName] [varchar] (250) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FNumber] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NOT NULL,
+[FName] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NOT NULL,
 [FOrder] [int] NOT NULL,
-[FDescription] [varchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
-[FDetailAssembly] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FDetailType] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FMasterAssembly] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
-[FMasterType] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL
+[FDescription] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
+[FDetailAssembly] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FDetailType] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FMasterAssembly] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
+[FMasterType] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_Sys_PrintGroup] ADD CONSTRAINT [PK_t_Mes_Sys_PrintGroup] PRIMARY KEY CLUSTERED  ([FNumber]) ON [PRIMARY]
