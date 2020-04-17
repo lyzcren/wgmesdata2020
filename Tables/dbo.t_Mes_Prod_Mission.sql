@@ -47,7 +47,9 @@ CREATE TABLE [dbo].[t_Mes_Prod_Mission]
 [FMesSelf007] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
 [FMesSelf008] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
 [FMesSelf009] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
-[FMesSelf010] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL
+[FMesSelf010] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
+[FIsMerge] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Mission_FIsMerged] DEFAULT ((0)),
+[FCancellation] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Mission_FCancellation] DEFAULT ((0))
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_Prod_Mission] ADD CONSTRAINT [PK_t_Mes_Prod_MOPlan] PRIMARY KEY CLUSTERED  ([FInterID]) ON [PRIMARY]
@@ -58,6 +60,8 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', N'完工上限', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FAuxInHighLimitQty'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'完工下限', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FAuxInLowLimitQty'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'是否作废', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FCancellation'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'审核日期', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Prod_Mission', 'COLUMN', N'FCheckDate'
 GO

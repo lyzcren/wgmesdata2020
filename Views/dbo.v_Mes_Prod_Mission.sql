@@ -19,7 +19,12 @@ AS
 			, mis.FUnitID, mis.FUnitName, mis.FUnitUUID
 			, mis.FParentModel, mis.FWorkShop, mis.FWorkShopNumber, mis.FWorkShopName
 			, dept.FItemID FWorkShopID
-			, mis.FStatus
+			, Case When mis.FCancellation = 1 Then 6	--作废
+					When mis.FStatus = 3 Then 3			--结案
+					--When mis.FPassQty >= mis.FPlanQty Then 2 
+					--When mis.FInputQty >= mis.FAuxInHighLimitQty Then 2
+					When mis.FInputQty > 0 Then 1		--已投
+					Else 0 End FStatus					--未投
 			, mis.FCreatorID, mis.FCreateDate
 			, mis.FCheckerID, mis.FCheckDate
 			, mis.FErpSyncDate, mis.FComments
@@ -30,6 +35,7 @@ AS
 			, rout.FName FRoutingName, rout.FNumber FRoutingNumber
 			-- 精度
 			, prd.FQtyDecimal
+			, mis.FIsMerge, mis.FCancellation
 		from t_Mes_Prod_Mission mis
 		Left Join t_Mes_Basic_Product prd On mis.FProductID = prd.FItemID
 		Left Join t_Mes_Tech_Route rout On prd.FRouteID = rout.FInterID
