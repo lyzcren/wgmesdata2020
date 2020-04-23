@@ -12,9 +12,9 @@ CREATE View [dbo].[v_Mes_Tech_Defect]
 As
 	Select def.FItemID, def.FNumber, def.FName
 		, def.FIsActive
-		, (select '`' + Cast(defDept.FDeptID as Varchar) + '`' 
+		, (select '`' + Cast(defDept.FDeptID as nvarchar) + '`' 
 					from t_Mes_Tech_DefectDept defDept where def.FItemID = defDept.FDefectID for xml path('')) FDeptID
-		, (select '`' + Cast(dept.FName as Varchar) + '`' 
+		, (select '`' + Cast(dept.FName as nvarchar) + '`' 
 					from t_Mes_Tech_DefectDept defDept
 					Left Join dbo.t_Mes_Basic_Dept dept On defDept.FDeptID = dept.FItemID
 					where def.FItemID = defDept.FDefectID for xml path('')) FDeptName
@@ -23,6 +23,7 @@ As
         , def.FEditorID, def.FEditDate	 
 		From dbo.t_Mes_Tech_Defect def
 			Left Join dbo.t_Mes_Sys_KeyValue kv On kv.FNumber = 'DefectType' And kv.FKey = def.FTypeID
+
 
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'工艺-不良', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Tech_Defect', NULL, NULL
