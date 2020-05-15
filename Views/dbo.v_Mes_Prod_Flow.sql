@@ -40,7 +40,7 @@ As
 			, prd.FQtyDecimal
 			, head.FWorkBeginDate, head.FWorkEndDate
 			, head.FCreatorID, head.FCreateDate
-			, head.FCancellation
+			, head.FCancellation, head.FIsRepair, head.FIsFromBatchChange, head.FIsBatchSplit, head.FIsBatchMerge
 			---- 岗位相关数量
 			--, rcd.FTakeQty, rcd.FInvCheckDeltaQty
 			---- 生产记录数量

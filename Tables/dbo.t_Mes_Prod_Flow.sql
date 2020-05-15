@@ -12,6 +12,8 @@ CREATE TABLE [dbo].[t_Mes_Prod_Flow]
 [FTotalInputQty] [decimal] (18, 4) NOT NULL,
 [FInputQty] [decimal] (18, 4) NOT NULL,
 [FIsRepair] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FIsRepair] DEFAULT ((0)),
+[FIsBatchSplit] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FIsBatchSplit] DEFAULT ((0)),
+[FIsBatchMerge] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FIsBatchMerge] DEFAULT ((0)),
 [FIsFromBatchChange] [bit] NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FIsFromBatchChange] DEFAULT ((0)),
 [FFirstFlowID] [int] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FFirstFlowID] DEFAULT ((0)),
 [FStatus] [int] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FStatus] DEFAULT ((0)),

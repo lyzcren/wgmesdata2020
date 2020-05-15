@@ -77,7 +77,7 @@ EXEC sp_addextendedproperty N'MS_Description', '是否操作员', 'SCHEMA', N'db
 GO
 EXEC sp_addextendedproperty N'MS_Description', 'ID', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_UM_User', 'COLUMN', N'FItemID'
 GO
-EXEC sp_addextendedproperty N'MS_Description', '名称', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_UM_User', 'COLUMN', N'FName'
+EXEC sp_addextendedproperty N'MS_Description', N'名称', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_UM_User', 'COLUMN', N'FName'
 GO
 EXEC sp_addextendedproperty N'MS_Description', '编码', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_UM_User', 'COLUMN', N'FNumber'
 GO
