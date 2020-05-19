@@ -7,6 +7,7 @@ CREATE TABLE [dbo].[t_Mes_Basic_Machine]
 [FDeptID] [int] NOT NULL,
 [FIsActive] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Machine_FIsActive] DEFAULT ((1)),
 [FStatus] [int] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Machine_FStatus] DEFAULT ((0)),
+[FMachineTypeId] [int] NULL,
 [FCreatorID] [int] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Machine_FCreatorID] DEFAULT ((0)),
 [FCreateDate] [datetime] NOT NULL,
 [FEditorID] [int] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Machine_FEditorID] DEFAULT ((0)),
@@ -30,6 +31,8 @@ GO
 EXEC sp_addextendedproperty N'MS_Description', N'是否启用（0未启用，1已启用）', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_Machine', 'COLUMN', N'FIsActive'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'id', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_Machine', 'COLUMN', N'FItemID'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'机台分类编号', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_Machine', 'COLUMN', N'FMachineTypeId'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'名称', 'SCHEMA', N'dbo', 'TABLE', N't_Mes_Basic_Machine', 'COLUMN', N'FName'
 GO

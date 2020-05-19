@@ -2,6 +2,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 SET ANSI_NULLS ON
 GO
+
+
 -- =============================================
 -- Author:		ywlin
 -- Create date: 2019-05-10
@@ -10,13 +12,21 @@ GO
 -- =============================================
 CREATE VIEW [dbo].[v_Mes_Basic_Machine] 
 AS
-	Select mac.FItemID, mac.FNumber, mac.FSerialNumber, mac.FName
+	SELECT mac.FItemID, mac.FNumber, mac.FSerialNumber, mac.FName
 		, mac.FDeptID, dept.FName FDeptName, dept.FNumber FDeptNumber
-		, mac.FIsActive, mac.FStatus
-	from t_Mes_Basic_Machine mac
-	Left Join t_Mes_Basic_Dept dept On mac.FDeptID = dept.FItemID
+		, mac.FIsActive, mac.FStatus, mact.ID AS 'FMachineTypeId', mact.FMachineTypeName
+	FROM t_Mes_Basic_Machine mac
+	LEFT JOIN t_Mes_Basic_Dept dept ON mac.FDeptID = dept.FItemID
+	LEFT JOIN t_Mes_Basic_MachineType mact ON macT.ID = mac.FMachineTypeId
 
 
+
+
+
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'机台分类编号', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Basic_Machine', 'COLUMN', N'FMachineTypeId'
+GO
+EXEC sp_addextendedproperty N'MS_Description', N'机台分类名称', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Basic_Machine', 'COLUMN', N'FMachineTypeName'
 GO
 EXEC sp_addextendedproperty N'MS_Description', N'基础资料-机台信息', 'SCHEMA', N'dbo', 'VIEW', N'v_Mes_Basic_Machine', NULL, NULL
 GO
