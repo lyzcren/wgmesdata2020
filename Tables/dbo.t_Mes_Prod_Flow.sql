@@ -30,7 +30,8 @@ CREATE TABLE [dbo].[t_Mes_Prod_Flow]
 [FUnitName] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL,
 [FWorkShop] [int] NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FWorkShop1] DEFAULT ((0)),
 [FCancellation] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Flow_FCancellation] DEFAULT ((0)),
-[FStatusBeforeCancel] [int] NULL
+[FStatusBeforeCancel] [int] NULL,
+[FComments] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_Prod_Flow] ADD CONSTRAINT [PK_t_Mes_Prod_Flow_1] PRIMARY KEY CLUSTERED  ([FInterID]) ON [PRIMARY]
