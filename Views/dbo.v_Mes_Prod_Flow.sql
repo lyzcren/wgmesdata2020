@@ -41,6 +41,7 @@ As
 			, head.FWorkBeginDate, head.FWorkEndDate
 			, head.FCreatorID, head.FCreateDate
 			, head.FCancellation, head.FIsRepair, head.FIsFromBatchChange, head.FIsBatchSplit, head.FIsBatchMerge
+			, head.FComments
 			---- 岗位相关数量
 			--, rcd.FTakeQty, rcd.FInvCheckDeltaQty
 			---- 生产记录数量

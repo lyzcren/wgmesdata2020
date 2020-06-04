@@ -54,6 +54,7 @@ As
 			-- 生产任务单其他字段
 			, mis.FMesSelf001, mis.FMesSelf002, mis.FMesSelf003, mis.FMesSelf004, mis.FMesSelf005
 			, mis.FMesSelf006, mis.FMesSelf007, mis.FMesSelf008, mis.FMesSelf009, mis.FMesSelf010
+			, flow.FComments
 		From t_Mes_Prod_Record rcd
 		Left Join t_Mes_Basic_Dept dept On rcd.FDeptID = dept.FItemID
 		Left Join t_Mes_Prod_Flow flow On rcd.FFlowID = flow.FInterID
