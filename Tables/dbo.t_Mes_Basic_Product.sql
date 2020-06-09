@@ -26,7 +26,8 @@ CREATE TABLE [dbo].[t_Mes_Basic_Product]
 [FParentNumber] [nvarchar] (80) COLLATE Chinese_PRC_CI_AS NULL,
 [FRouteID] [int] NULL,
 [FIsActive] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Basic_Product_FIsActive] DEFAULT ((1)),
-[FComments] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL
+[FComments] [nvarchar] (250) COLLATE Chinese_PRC_CI_AS NULL,
+[FModifyTimeNumber] [bigint] NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_Basic_Product] ADD CONSTRAINT [PK_t_Mes_Basic_Product] PRIMARY KEY CLUSTERED  ([FItemID]) ON [PRIMARY]
