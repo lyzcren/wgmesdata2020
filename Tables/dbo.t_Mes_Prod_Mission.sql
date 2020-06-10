@@ -49,7 +49,8 @@ CREATE TABLE [dbo].[t_Mes_Prod_Mission]
 [FMesSelf009] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
 [FMesSelf010] [nvarchar] (128) COLLATE Chinese_PRC_CI_AS NULL,
 [FIsMerge] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Mission_FIsMerged] DEFAULT ((0)),
-[FCancellation] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Mission_FCancellation] DEFAULT ((0))
+[FCancellation] [bit] NOT NULL CONSTRAINT [DF_t_Mes_Prod_Mission_FCancellation] DEFAULT ((0)),
+[FConfirmDate] [datetime] NULL
 ) ON [PRIMARY]
 GO
 ALTER TABLE [dbo].[t_Mes_Prod_Mission] ADD CONSTRAINT [PK_t_Mes_Prod_MOPlan] PRIMARY KEY CLUSTERED  ([FInterID]) ON [PRIMARY]
